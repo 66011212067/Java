@@ -6,33 +6,33 @@ class chk05_66011212067
 	{
 		Scanner sc = new Scanner(System.in);
 		int people = 0,sum_IGUNIT=0,sum_UNIT=0;
-		//ÃÑº¤èÒ¨Ó¹Ç¹¤¹à¢éÒÁÒ
+		//ï¿½Ñºï¿½ï¿½Ò¨Ó¹Ç¹ï¿½ï¿½3ï¿½ï¿½ï¿½ï¿½ï¿½
 		System.out.printf("input count people : ");
 		people = (int)sc.nextInt();
 		for(int i=0;i<people;i++){
 			System.out.println("\n********************************************");
 			System.out.printf("input [A,B,C,D,F] people[%d]: ",i+1);
-			//ÃÑº¤èÒà¡Ã´  ABCDF áÅéÇàÍÒä»àªç¤·Õè ¿Ñ§¡ìªÑ¹áÅéÇ¨Ðä´éàÅ¢¨Ó¹Ç¹àµçÁÍÍ¡ÁÒ ¶éÒà¡Ã´µÃ§µÒÁà§×èÍ¹ä¢ ¨Ðä´é 0-4 ¶éÒäÁèµÃ§¨Ðä´é -1 ÍÍ¡ÁÒ
+			//ï¿½Ñºï¿½ï¿½ï¿½ï¿½Ã´  ABCDF ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç¤·ï¿½ï¿½ ï¿½Ñ§ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½Ç¨ï¿½ï¿½ï¿½ï¿½Å¢ï¿½Ó¹Ç¹ï¿½ï¿½ï¿½ï¿½Í¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã´ï¿½Ã§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¹ï¿½ ï¿½ï¿½ï¿½ï¿½ 0-4 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã§ï¿½ï¿½ï¿½ï¿½ -1 ï¿½Í¡ï¿½ï¿½
 			String grade = sc.next();
 			int score = setGradeToNumber(grade);
-			//ÃÑº¤èÒË¹èÇÂ¡Ôµ
+			//ï¿½Ñºï¿½ï¿½ï¿½Ë¹ï¿½ï¿½Â¡Ôµ
 			System.out.printf("input UNIT : ");
 			int git = sc.nextInt();
-			//àªç¤ÇèÒ¶éÒ¤Ðá¹¹ÁÒ¡¡ÇèÒ 0 ãËé·Ó§Ò¹µ»¡µÔÃ§¹Õé  
+			//ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½Ò¤ï¿½á¹¹ï¿½Ò¡ï¿½ï¿½ï¿½ï¿½ 0 ï¿½ï¿½ï¿½Ó§Ò¹ï¿½ï¿½ï¿½ï¿½ï¿½Ã§ï¿½ï¿½ï¿½  
 			if(score>=0){
-				sum_UNIT += git;//ºÇ¡·ºà¡Ã´à¡çºäÇé
-				int IG_UNIT= score*git;//ËÒ¤Ðá¹¹ Ë¹èÇÂ¡Ôµ+¤Ðá¹¹à¡Ã´
-				sum_IGUNIT += IG_UNIT;//ºÇ¡·Ñº¤Ðá¹¹ÃÇÁäÇé
+				sum_UNIT += git;//ï¿½Ç¡ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½
+				int IG_UNIT= score*git;//ï¿½Ò¤ï¿½á¹¹ Ë¹ï¿½ï¿½Â¡Ôµ+ï¿½ï¿½á¹¹ï¿½Ã´
+				sum_IGUNIT += IG_UNIT;//ï¿½Ç¡ï¿½Ñºï¿½ï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				System.out.printf("IG = %d, UNIT = %d, IG*UNIT = %d",score,git,IG_UNIT);
 			}else{
 				System.out.printf("IG =  , UNIT = %d, IG*UNIT =   ",git);
 			}
 		}
 		System.out.println("\n********************************************");
-		float gpax = (float)sum_IGUNIT/sum_UNIT;//ËÒ gpax â´Â ¤Ðá¹¹ÃÇÁÁÒËÒÃ¡ÑºË¹èÇÂ¡ÔµÃÇÁ
+		float gpax = (float)sum_IGUNIT/sum_UNIT;//ï¿½ï¿½ gpax ï¿½ï¿½ ï¿½ï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¡ÑºË¹ï¿½ï¿½Â¡Ôµï¿½ï¿½ï¿½
 		System.out.printf("sum UNIT = %d\nIG*UNIT = %d\nGPAX = %f\n",sum_UNIT,sum_IGUNIT,gpax);
 	}
-	//¿Ñ§¡ìªÑ¹Êè§µÑÇÍÑ¡ÉÃ  ABCDF à¢éÒÁÒà¾×èÍá»Å§à»ç¹µÑÇàÅ¢Êè§ÍÍ¡ä»
+	//ï¿½Ñ§ï¿½ï¿½Ñ¹ï¿½è§µï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½  ABCDF ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å§ï¿½ç¹µï¿½ï¿½ï¿½Å¢ï¿½ï¿½ï¿½Í¡ï¿½
 	private static int setGradeToNumber(String grade){
 		int number;
 		switch (grade){
