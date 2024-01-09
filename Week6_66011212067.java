@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class timesleep {
+public class Whk6_66011212067 {
     public static void main(String[] args) {
         int y=0,m=0,d=0;
         y = input("input year: ");
