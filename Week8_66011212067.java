@@ -1,87 +1,133 @@
 import java.util.Scanner;
 public class Week8_66011212067 {
     public static void main(String[] args){
-        // set Scanner varible
-        Scanner sc_int = new Scanner(System.in);
-        Scanner sc_str = new Scanner(System.in);
-        Scanner sc_float = new Scanner(System.in);
-        // input count Student --> n
-        System.out.print("input count Student: ");
-        int n = sc_int.nextInt();
-        // create varible array names,mid,final,scores,grades
-        String []names = new String[n];
-        float []midterm = new float[n];
-        float []finals = new float[n];
-        float []scores = new float[n];
-        String []grades = new String[n];
-        // loop n, input name,mid,final
+        int n = input_int("input count Student: ");
+        People[] people = new People[n];
+        for(int i=0; i<n; i++){
+            System.out.println("********************************************");
+            people[i] = new People(input_str("Name: "));
+            people[i].setMid(input_int("midterm: "));
+            people[i].setFin(input_int("final: "));
+        }
+        String []max_string = {"","",""};
+        String []min_string = {"","",""};
+        int []max_int = {0,0,0};
+        int []min_int = {0,0,0};
+        int []result = {0,0,0};
+        System.out.println("********************************************");
+        print_strArray("Name","Midterm","Final","Score","Grade");
         for(int i=0;i<n;i++){
-            System.out.println("***************************************");
-            System.out.print("name: ");
-            names[i] = sc_str.nextLine();
-            System.out.print("midterm: ");
-            midterm[i] = sc_float.nextFloat();
-            System.out.print("final: ");
-            finals[i] = sc_float.nextFloat();
-            // calculator scores,grades
-            scores[i] = midterm[i]+finals[i];
-            grades[i] = (scores[i]>=70)?"S":"U";
-        }
-        System.out.println("***************************************");
-        // print header
-        System.out.printf("Name\t\tMidterm\tFinal\tScore\tGrade\n");
-        String [][]result_str = {{"","","Max midterm","Min midterm"},{"","","Max Final","Min Final"},{"","","Max score","Min score"}};
-        float [][]result_int = {{0,0},{0,0},{0,0}};
-        // loop n, print name,mid,final,score,grade
-        for(int index=0;index<n;index++){
-            System.out.printf("%s\t\t%.2f\t%.2f\t%.2f\t%s\n",names[index],midterm[index],finals[index],scores[index],grades[index]);
-            // 
-            float m_number = finals[index];
-            int a_index = 0;
-            if(result_int[a_index][1]<=0){
-                result_int[a_index][1] = m_number;
-                result_str[a_index][1] = names[index];
+            result[0] += people[i].getMid();
+            result[1] += people[i].getFin();
+            result[2] += people[i].getScore();
+            print_DataPeople(people[i].getName(),people[i].getMid(),people[i].getFin(),people[i].getScore(),people[i].getGrade());
+            if(people[i].getMid()>max_int[0]){
+                max_string[0] = people[i].getName();
+                max_int[0] = people[i].getMid();
             }
-            if(m_number>result_int[0][0]){
-                result_int[0][0] = m_number;
-                result_str[0][0] = names[index];
+            if(people[i].getFin()>max_int[1]){
+                max_string[1] = people[i].getName();
+                max_int[1] = people[i].getFin();
+            }
+            if(people[i].getScore()>max_int[2]){
+                max_string[2] = people[i].getName();
+                max_int[2] = people[i].getScore();
+            }
+            if(i==0){
+                min_string[0] = people[i].getName();
+                min_int[0] = people[i].getMid();
+                min_string[1] = people[i].getName();
+                min_int[1] = people[i].getFin();
+                min_string[2] = people[i].getName();
+                min_int[2] = people[i].getScore();
             }else{
-                result_int[a_index][1] = m_number;
-                result_str[a_index][1] = names[index];
-            }
-            // 
-            float f_number = finals[index];
-            a_index = 1;
-            if(result_int[a_index][1]<=0){
-                result_int[a_index][1] = f_number;
-                result_str[a_index][1] = names[index];
-            }
-            if(f_number>result_int[1][0]){
-                result_int[1][0] = f_number;
-                result_str[1][0] = names[index];
-            }else{
-                result_int[a_index][1] = f_number;
-                result_str[a_index][1] = names[index];
-            }
-            // 
-            float s_number = scores[index];
-            a_index = 2;
-            if(result_int[a_index][1]<=0){
-                result_int[a_index][1] = s_number;
-                result_str[a_index][1] = names[index];
-            }
-            if(s_number>result_int[2][0]){
-                result_int[2][0] = s_number;
-                result_str[2][0] = names[index];
-            }else{
-                result_int[a_index][1] = s_number;
-                result_str[a_index][1] = names[index];
+                if(people[i].getMid()<min_int[0]){
+                    min_string[0] = people[i].getName();
+                    min_int[0] = people[i].getMid();
+                }
+                if(people[i].getFin()<min_int[1]){
+                    min_string[1] = people[i].getName();
+                    min_int[1] = people[i].getFin();
+                }
+                if(people[i].getScore()<min_int[2]){
+                    min_string[2] = people[i].getName();
+                    min_int[2] = people[i].getScore();
+                }
             }
         }
-        // footer
-        for(int i=0;i<3;i++){
-            System.out.printf("%s\t%s\n",result_str[i][2],result_str[i][0]);
-            System.out.printf("%s\t%s\n",result_str[i][3],result_str[i][1]);
-        }
+        System.out.println("---------------------------------------");
+        print_DataPeople("result",result[0],result[1],result[2],"");
+        print_DataPeople("max",max_int[0],max_int[1],max_int[2],"");
+        print_DataPeople("min",min_int[0],min_int[1],min_int[2],"");
+        System.out.printf("%s\t%s\n","Max midterm",max_string[0]);
+        System.out.printf("%s\t%s\n","min midterm",min_string[0]);
+        System.out.printf("%s\t%s\n","Max Final",max_string[1]);
+        System.out.printf("%s\t%s\n","min Final",min_string[1]);
+        System.out.printf("%s\t%s\n","Max score",max_string[2]);
+        System.out.printf("%s\t%s\n","min score",min_string[2]);
+    }
+    private static void print_strArray(String ...titles){
+        System.out.printf("%s\t\t%s\t%s\t%s\t%s\n",titles[0],titles[1],titles[2],titles[3],titles[4]);
+    }
+    private static void print_DataPeople(String name,int mid,int fin,int score,String grade){
+        System.out.printf("%s\t\t%d\t%d\t%d\t%s\n",name,mid,fin,score,grade);
+    }
+    private static int input_int(String title){
+        Scanner sc = new Scanner(System.in);
+        System.out.print(title);
+        int number = sc.nextInt();
+        return number;
+    }
+    private static String input_str(String title){
+        Scanner sc = new Scanner(System.in);
+        System.out.print(title);
+        String text = sc.nextLine();
+        return text;
+    }
+}
+
+class People {
+    private String name;
+    private int mid;
+    private int fin;
+    private int score;
+    private String grade;
+
+    public People(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String new_title) {
+        this.name = new_title;
+    }
+
+    public int getMid() {
+        return mid;
+    }
+
+    public void setMid(int new_number) {
+        this.mid = new_number;
+    }
+
+    public int getFin() {
+        return fin;
+    }
+
+    public void setFin(int new_number) {
+        this.fin = new_number;
+    }
+
+    public int getScore() {
+        this.score = this.mid+this.fin;
+        return score;
+    }
+
+    public String getGrade() {
+        this.grade = (this.score>=70)?"S":"U";
+        return grade;
     }
 }
