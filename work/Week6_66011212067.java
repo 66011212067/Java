@@ -1,3 +1,4 @@
+package work;
 import java.util.Scanner;
 public class Whk6_66011212067 {
     public static void main(String[] args) {

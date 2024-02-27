@@ -1,3 +1,4 @@
+package work;
 import java.util.Scanner;
 class Week3_66011212067
 {

@@ -1,3 +1,4 @@
+package work;
 import java.util.Scanner;
 public class Week10_66011212067 {
     static Week10_66011212067 met = new Week10_66011212067();
