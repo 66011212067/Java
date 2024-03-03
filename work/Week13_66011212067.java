@@ -1,84 +1,67 @@
 import java.util.Scanner;
-class Week13_66011212067 {
-    public static void main(String [] args){
-        Week13_66011212067 input = new Week13_66011212067();
-        System.out.println("***************************************************");
-        String test = input.inputStr("input numberid : ");
-        PeopleID peopleid = new PeopleID(test);
-        peopleid.showall();
-        System.out.println("***************************************************");
+class Week13_66011212067{
+    static Week13_66011212067 met = new Week13_66011212067();
+    public static void main(String[] args){
+        String title = met.input("input your text : ");        
+        FormatStringToNumber format = new FormatStringToNumber(title);
+        format.formatString();
+        format.formatResult();
+        format.show();
     }
-    private String inputStr(String title){
+    String input(String title){
         Scanner sc = new Scanner(System.in);
         System.out.print(title);
-        return sc.nextLine();
-    } 
+        String data = sc.nextLine();
+        return  data;
+    }
 }
-/**
- * PeopleID
- */ 
-class PeopleID {
-    private String staticid;
-    private int[] id = new int[13];
-    private int[] calID = new int[12];
-    private int summation;
-    private int numbermod;
-    private int numberdelete;
-    private String backnumberToCheck;
-    private boolean statucthi;
-    public PeopleID(String id){
-        this.staticid = id;
-        id = id.replaceAll("-", "");
-        id = id.replaceAll(" ", "");
-        String chkstr = "0123456789";
-        String []sub = id.split("");
-        if(sub.length == 13){
-            boolean runstatus = true;
-            for(int i=0;i<13;i++){
-                if(chkstr.indexOf("0") != -1){
-                    this.id[i] = Integer.parseInt(sub[i]); 
-                }else{
-                    break;
-                }
-            }
-            if(runstatus){
-                step1();
-                step2();
-                step3();
-                step4();
-                step5();
+class FormatStringToNumber{
+    private String data = "";
+    private String format = "";
+    private String addnumber = "";
+    FormatStringToNumber(String data){
+        this.data = data;
+    }
+    void formatString(){
+        String num = "0123456789";
+        String []substr = this.data.split("");
+        String []resultStrings = {};
+        for(String i : substr){
+            if(num.indexOf(i) != -1){
+                this.format += i;
             }
         }
-    }
-    void step1(){
-        int x = 13;
-        for(int i=0;i<12;i++){
-            this.calID[i] = this.id[i]*x--;
+        substr = this.format.split("");
+        this.format = "";
+        int sum = 0;
+        for(int i=0; i<substr.length;i++){
+            sum += Integer.parseInt(substr[i]);
+            if(i<substr.length-1){
+                this.format += substr[i]+"+";
+            }else{
+                this.format += substr[i];
+            }
         }
+        this.format += "="+sum;
+        this.addnumber += sum;
     }
-    void step2(){
-        for(int i : this.calID){
-            this.summation += i;
+    void formatResult(){
+        String []subResult = this.addnumber.split("");
+        this.addnumber = "";
+        int sum=0;
+        for(int i=0; i<subResult.length;i++){
+            sum += Integer.parseInt(subResult[i]);
+            if(i<subResult.length-1){
+                this.addnumber += subResult[i]+"+";
+            }else{
+                this.addnumber += subResult[i];
+            }
         }
+        this.addnumber += "="+sum;
     }
-    void step3(){
-        this.numbermod = this.summation % 11;
+    void show(){
+        System.out.println("*************************************************");
+        System.out.println(this.data+" -->"+this.format+" -->"+this.addnumber);
+        System.out.println("*************************************************");
     }
-    void step4(){
-        this.numberdelete = 11-this.numbermod;
-        String x = String.valueOf(this.numberdelete);
-        String []x1 = x.split("");
-        this.backnumberToCheck =  x1[x.length()-1];
-    }
-    void step5(){
-        boolean check = String.valueOf(this.id[12]).equals(this.backnumberToCheck);
-        this.statucthi = (check)?true:false;
-    }
-    public void showall(){
-        System.out.println(this.staticid +" --> "+this.statucthi);
-    }
-    
 }
-
-
-
