@@ -18,50 +18,53 @@ class Week13_66011212067{
 class FormatStringToNumber{
     private String data = "";
     private String format = "";
-    private String addnumber = "";
+    private String result = "";
     FormatStringToNumber(String data){
         this.data = data;
+        this.result += data+" -->,";
     }
     void formatString(){
         String num = "0123456789";
         String []substr = this.data.split("");
-        String []resultStrings = {};
+        this.data = "";
         for(String i : substr){
             if(num.indexOf(i) != -1){
                 this.format += i;
             }
         }
-        substr = this.format.split("");
-        this.format = "";
-        int sum = 0;
-        for(int i=0; i<substr.length;i++){
-            sum += Integer.parseInt(substr[i]);
-            if(i<substr.length-1){
-                this.format += substr[i]+"+";
-            }else{
-                this.format += substr[i];
-            }
-        }
-        this.format += "="+sum;
-        this.addnumber += sum;
     }
     void formatResult(){
-        String []subResult = this.addnumber.split("");
-        this.addnumber = "";
-        int sum=0;
-        for(int i=0; i<subResult.length;i++){
-            sum += Integer.parseInt(subResult[i]);
-            if(i<subResult.length-1){
-                this.addnumber += subResult[i]+"+";
+        while (true) {
+            if(this.format.split("").length<=1){
+                break;
             }else{
-                this.addnumber += subResult[i];
+                String []substr = this.format.split("");
+                int sum = 0;
+                String resultdata ="";
+                for(int i=0;i<substr.length;i++){
+                    sum += Integer.parseInt(substr[i]);
+                    if(i<substr.length-1){
+                        resultdata += substr[i]+"+";
+                    }else{
+                        resultdata += substr[i];
+                    }
+                }
+                this.format = ""+sum;
+                resultdata += "="+sum+",";
+                this.result += resultdata;
             }
         }
-        this.addnumber += "="+sum;
     }
     void show(){
         System.out.println("*************************************************");
-        System.out.println(this.data+" -->"+this.format+" -->"+this.addnumber);
+        String []subResult = this.result.split(",");
+        for(int i=0; i<subResult.length;i++){
+            if(i<subResult.length-1){
+                System.out.print(subResult[i]+" -->");
+            }else{
+                System.out.print(subResult[i]+"\n");
+            }
+        }
         System.out.println("*************************************************");
     }
 }
