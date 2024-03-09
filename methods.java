@@ -1,30 +1,65 @@
-public class methods {
-    public static void main(String[] args){
-        String number = "1011";
-        int intNumber = Integer.parseInt(number); //str to int
-        String strNumber = Integer.toBinaryString(intNumber); // number to banaricode
-        String hexNumber = Integer.toHexString(intNumber); // number to base16
-        String OctalNumber = Integer.toOctalString(intNumber); // number to base8
-        String strNumber2 = Integer.toString(intNumber,16); // number to String radix base
-        int checkgibnumber = Integer.compare(100,99); // check max number
-        Character.isDigit('5'); // check string
-        Character.isLetter('x'); // check string is tring true
-        Character.isSpaceChar('x'); // check space
-        Character ch = new Character('0');
-        System.out.println(ch.toString()); // check upper text
-        // title.charAt(title.length()-1) get index in text
-        // title.compareTo(title) == (x) .equals
-        // title.compareToIgnoreCase("hello") check == lower or upper .equalsIgnoreCase()
-        // char[] data = {'a','A','B'};
-        // String.copyValueOf(data) char array to String
-        // String.copyValueOf(data, 0, 2) chat array [::] to String
-        // title.endsWith("o") check text end
-        // title.startsWith("H") check text start
-        // title.split("ll")[1]
-        // title.indexOf("asdas")
-        // title.replace("H", "OK")
-        // title.substring(1,2)..
-        // title.toCharArray()[0]
-        // title.tring() cut space \n \t 
+import java.io.IOException;
+import java.util.StringTokenizer;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Calendar;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;;
+class methods{
+    public static void main(String[] args) throws IOException {
+        // String title = "HEllo AA BB CC and FFF";
+        // StringBuffer std = new StringBuffer(title);
+        // StringBuffer std1 = std.insert(std.length(), " ");
+        // StringBuffer std2 = std.deleteCharAt(0);
+        // System.out.println(std);
+        // System.out.println(replaseSpace(std));
+        // /////////////////////////////////////////////////////////////////
+        // Runtime runtime = Runtime.getRuntime();
+        // try{
+            // runtime.exec("notepad.exe");
+            // runtime.exec("C:/Program Files/Google/Chrome/Application/chrome.exe");
+            // runtime.exec("C:/Program Files/Microsoft Office/root/Office16/EXCEL.EXE");
+        // }catch(IOException err){}
+        // /////////////////////////////////////////////////////////////////
+        // StringTokenizer token = new StringTokenizer("s1 as");// tolen this word
+        // System.out.println(token.countTokens());
+        // System.out.println(token.hashCode());
+        // while (token.hasMoreTokens()) {
+        //     System.out.println(token.nextToken());
+        // }
+        // /////////////////////////////////////////////////////////////////
+        Date date = new Date();
+        // System.out.println(date.toInstant());
+        // System.out.println(date.getTime());
+        // System.out.println(date.getDate());
+        // System.out.println(date.getDay());
+        // System.out.println(date.getMonth());
+        // System.out.println(date.getYear());
+        // System.out.println(date.getHours());
+        // /////////////////////////////////////////////////////////////////
+        // Calendar calender = Calendar.getInstance();
+        // System.out.println(calender.DAY_OF_MONTH);
+        // /////////////////////////////////////////////////////////////////
+        // Locale lc = new Locale("th");
+        // Locale lc = new Locale("en");
+        // SimpleDateFormat sdfm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss {EEEE E} {MMMM MMM} {a,{zzzz z Z}}");
+        // SimpleDateFormat sdfm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss {EEEE E} {MMMM MMM} {a,{zzzz z Z}}",lc);
+        // System.out.println(sdfm.format(date));
+        // /////////////////////////////////////////////////////////////////
+        DecimalFormat dcm = new DecimalFormat("#,###,###.##");
+        System.out.println(dcm.format(1233.12311155));
+
+
+    }
+    static StringBuffer replaseSpace(StringBuffer std){
+        while (true) {
+            int space = std.indexOf(" ");
+            if(space <= 0){
+                break;
+            }else{
+                std = std.replace(space,space+1, "");
+            }
+        }
+        return std;
     }
 }

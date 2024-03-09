@@ -1,3 +1,4 @@
+package work;
 import java.util.Scanner;
 import java.util.LinkedList;
 import java.io.IOException;
