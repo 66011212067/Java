@@ -24,7 +24,6 @@ class Week15_66011212067 {
             }
             fw.close();
             Scanner rf = new Scanner(new File(path));
-            // System.out.println("Code\tFname\t\tLname\t\tMidterm\tFinal\tScore\tGrade");
             while (rf.hasNextLine()) {
                 System.out.println(rf.nextLine());
             }
@@ -35,7 +34,7 @@ class Week15_66011212067 {
         System.out.print(title);
         return sc.nextLine();
     }
-    Integer inputInt(String title){
+    Integer inputInt(String title) throws IOException{
         Scanner sc = new Scanner(System.in);
         System.out.print(title);
         return sc.nextInt();
@@ -73,7 +72,7 @@ class Nisit{
         return this.lastName;
     }
     String getGrade(){
-        return (this.score/10>100||this.score/10<0)?"Error":"FFFFFDCBAAA".split("")[(int)(this.score/10)];
+        return (this.score>100||this.score<0)?"Error":"FFFFFDCBAAA".split("")[(int)(this.score/10)];
     }
     double getMid(){
         return this.midTerm;
