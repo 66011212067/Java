@@ -15,6 +15,7 @@ public class ReadFileMethod3 {
             // }
             while(df.hasNextInt()) {
                 System.out.print(df.nextInt());
+                System.out.print(df.next());
             }
         }catch(IOException err1){
             System.out.println(err1);
