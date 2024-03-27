@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.ArnameStudentrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -40,7 +40,7 @@ class collection {
         // while (itt.hasNext()) {
         //     System.out.println(itt.next()); 
         // }
-        // for(String i :nameStudent ){
+        // for(String i : ){
         //     System.out.println(i);
         // }
         // System.out.println(nameStudent.contains("Jo"));

@@ -1,0 +1,7 @@
+cat brid butterfly ant bird ant ant brid cat termite 
+cat = 2
+brid = 2
+butterfly = 1
+ant = 3
+bird = 1
+termite = 1
